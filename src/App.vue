@@ -17,11 +17,14 @@
 
         <md-list>
           <md-list-item>
-            <md-icon>move_to_inbox</md-icon> <span>Todos</span>
+            <md-icon>move_to_inbox</md-icon>
+            <router-link to="/todos">Todos</router-link>
+
           </md-list-item>
 
           <md-list-item>
-            <md-icon>send</md-icon> <span>Tokens</span>
+            <md-icon>send</md-icon>
+            <router-link to="/tokens">Tokens</router-link>
 
             <md-divider class="md-inset"></md-divider>
           </md-list-item>
@@ -41,7 +44,7 @@
         </md-list>
       </md-sidenav>
 
-      TODO contingut
+      <router-view></router-view>
     </div>
 </template>
 
