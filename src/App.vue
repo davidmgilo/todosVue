@@ -40,6 +40,8 @@
 
         </md-list>
       </md-sidenav>
+
+      TODO contingut
     </div>
 </template>
 
