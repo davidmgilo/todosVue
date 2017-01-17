@@ -11,6 +11,22 @@
         return {
           msg: 'Todos aquí'
         }
+      },
+      created () {
+        console.log('Provant!!')
+        this.fetchData()
+      },
+      methods: {
+        fetchData: function () {
+          return this.fetchPage(1)
+        },
+        fetchPage: function (page) {
+          this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
+            console.log(response)
+          }, (response) => {
+            console.log(response)
+          })
+        }
       }
     }
 </script>
