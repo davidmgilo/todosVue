@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div>Msg: {{ msg }}</div>
+        <ul>
+            <li v-for="(todo, index) in todos"> {{ todo.name }}</li>
+        </ul>
+
     </div>
 </template>
 <style>
@@ -9,7 +12,7 @@
     export default{
       data () {
         return {
-          msg: 'Todos aquí'
+          todos: []
         }
       },
       created () {
@@ -22,7 +25,8 @@
         },
         fetchPage: function (page) {
           this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
-            console.log(response)
+            console.log(response.data)
+            this.todos = response.data.data
           }, (response) => {
             console.log(response)
           })
