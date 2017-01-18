@@ -44,6 +44,10 @@ export default{
       return this.fetchPage(1)
     },
     fetchPage: function (page) {
+      var token = this.fetchToken()
+      if (token) {
+        this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token
+      }
       this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
         console.log(response.data)
         this.todos = response.data.data
@@ -82,13 +86,3 @@ export default{
   }
 }
 </script>
-
-var extractToken = function (hash) {
-var match = hash.match(/access_token=(\w+)/);
-return !!match && match[1];
-};
-
-console.log("Prova!");
-var token = extractToken(document.location.hash);
-console.log(token);
-document.getElementById('inp').value = token;
