@@ -26,6 +26,9 @@ export default{
     }
   },
   created () {
+    var token = this.extractToken(document.location.hash)
+    console.log(token)
+    if (token) this.saveToken(token)
     console.log(this.fetchToken())
     if (this.fetchToken()) {
       this.authorized = true
@@ -48,17 +51,38 @@ export default{
     },
     connect: function () {
       console.log('Do connect here!')
-      var query = 'client_id=' + AUTH_CLIENT_ID + '&redirect_uri=' + window.location + '&response_type=token&scope='
+     // var query = 'client_id=' + AUTH_CLIENT_ID + '&redirect_uri=' + window.location + '&response_type=token&scope='
+      query = {
+        client_id: AUTH_CLIENT_ID,
+        redirect_uri: String(window.location),
+        response_type: 'token',
+        scope: ''
+
+      }
+      var query = window.querystring.stringify(query)
       console.log('http://todos.dev:8080/oauth/authorize?' + query)
-     // window.location.replace('http://todos.dev:8080/oauth/authorize?' + query)
+      window.location.replace('http://todos.dev:8080/oauth/authorize?' + query)
     },
     fetchToken: function () {
       return window.localStorage.getItem(STORAGE_KEY)
     },
     saveToken: function (token) {
       window.localStorage.setItem(STORAGE_KEY, token)
+    },
+    extractToken: function (hash) {
+      var match = hash.match(/access_token=(\w+)/)
+      return !!match && match[1]
     }
   }
 }
 </script>
 
+var extractToken = function (hash) {
+var match = hash.match(/access_token=(\w+)/);
+return !!match && match[1];
+};
+
+console.log("Prova!");
+var token = extractToken(document.location.hash);
+console.log(token);
+document.getElementById('inp').value = token;

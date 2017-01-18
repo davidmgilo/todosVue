@@ -7,11 +7,13 @@ import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.css'
 import VueRouter from 'vue-router'
 import Axios from 'axios'
+import querystring from 'querystring'
 
 import Todos from 'components/Todos'
 import Tokens from 'components/Tokens'
 
 window.axios = Axios
+window.querystring = querystring
 Vue.prototype.$http = Axios
 
 const routes = [
@@ -20,6 +22,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes
 })
 
