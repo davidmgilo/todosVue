@@ -13,33 +13,52 @@
 <style>
 </style>
 <script>
-    export default{
-      data () {
-        return {
-          todos: [],
-          authorized: false
-        }
-      },
-      created () {
-        console.log('Provant!!')
-        this.fetchData()
-      },
-      methods: {
-        fetchData: function () {
-          return this.fetchPage(1)
-        },
-        fetchPage: function (page) {
-          this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
-            console.log(response.data)
-            this.todos = response.data.data
-          }, (response) => {
-            console.log(response)
-          })
-        },
-        connect: function () {
-          console.log('Do connect here!')
-        }
-      }
+// Local storage: Session Storage
+
+var STORAGE_KEY = 'todosvue_token'
+var AUTH_CLIENT_ID = '4'
+
+export default{
+  data () {
+    return {
+      todos: [],
+      authorized: false
     }
+  },
+  created () {
+    console.log(this.fetchToken())
+    if (this.fetchToken()) {
+      this.authorized = true
+    } else {
+      this.authorized = false
+    }
+    this.fetchData()
+  },
+  methods: {
+    fetchData: function () {
+      return this.fetchPage(1)
+    },
+    fetchPage: function (page) {
+      this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
+        console.log(response.data)
+        this.todos = response.data.data
+      }, (response) => {
+        console.log(response)
+      })
+    },
+    connect: function () {
+      console.log('Do connect here!')
+      var query = 'client_id=' + AUTH_CLIENT_ID + '&redirect_uri=' + window.location + '&response_type=token&scope='
+      console.log('http://todos.dev:8080/oauth/authorize?' + query)
+     // window.location.replace('http://todos.dev:8080/oauth/authorize?' + query)
+    },
+    fetchToken: function () {
+      return window.localStorage.getItem(STORAGE_KEY)
+    },
+    saveToken: function (token) {
+      window.localStorage.setItem(STORAGE_KEY, token)
+    }
+  }
+}
 </script>
 
