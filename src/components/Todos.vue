@@ -1,9 +1,13 @@
 <template>
     <div>
-        <ul>
-            <li v-for="(todo, index) in todos"> {{ todo.name }}</li>
+        <div v-show="!authorized">
+            <md-button class="md-raised md-primary" @click="connect()">Connect</md-button>
+        </div>
+        <ul v-show="authorized">
+            <li v-for="(todo, index) in todos">
+                {{ todo.name }}
+            </li>
         </ul>
-
     </div>
 </template>
 <style>
@@ -12,7 +16,8 @@
     export default{
       data () {
         return {
-          todos: []
+          todos: [],
+          authorized: false
         }
       },
       created () {
@@ -30,6 +35,9 @@
           }, (response) => {
             console.log(response)
           })
+        },
+        connect: function () {
+          console.log('Do connect here!')
         }
       }
     }
