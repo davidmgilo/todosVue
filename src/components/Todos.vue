@@ -26,33 +26,39 @@ export default{
   data () {
     return {
       todos: [],
-      authorized: false
+      authorized: false,
+      token: null
     }
   },
   created () {
     var token = this.extractToken(document.location.hash)
     if (token) this.saveToken(token)
-    if (this.fetchToken()) {
+    if (this.token == null) {
+      this.token = this.fetchToken()
+    }
+
+    if (this.token) {
       this.authorized = true
+      this.fetchData()
     } else {
       this.authorized = false
     }
-    this.fetchData()
   },
   methods: {
     fetchData: function () {
       return this.fetchPage(1)
     },
     fetchPage: function (page) {
-      var token = this.fetchToken()
-      if (token) {
-        this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + token
-      }
+      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + this.token
+
       this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
         console.log(response.data)
         this.todos = response.data.data
       }, (response) => {
-        console.log(response)
+        console.log(response.data)
+        // TODO only if HTTP response code is 401
+        // TODO mostrar amb una bona UI/UE error -> sweetalert
+        // this.authorized = false
       })
     },
     connect: function () {
