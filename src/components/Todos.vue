@@ -27,12 +27,12 @@
             </md-table-body>
 
             <!--<md-table-pagination-->
-                    <!--md-size="0"-->
+                    <!--:md-size="perPage"-->
                     <!--:md-total="total"-->
-                    <!--md-page="1"-->
-                    <!--md-label="Rows"-->
+                    <!--:md-page="page"-->
+                    <!--md-label="Tasks"-->
                     <!--md-separator="of"-->
-                    <!--:md-page-options="[5, 10, 25, 50]"-->
+                    <!--:md-page-options="false"-->
                     <!--@pagination=""></md-table-pagination>-->
         </md-table>
 
