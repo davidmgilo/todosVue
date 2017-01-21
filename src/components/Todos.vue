@@ -25,6 +25,15 @@
                     <md-table-cell>{{todo.done}}</md-table-cell>
                 </md-table-row>
             </md-table-body>
+
+            <!--<md-table-pagination-->
+                    <!--md-size="0"-->
+                    <!--:md-total="total"-->
+                    <!--md-page="1"-->
+                    <!--md-label="Rows"-->
+                    <!--md-separator="of"-->
+                    <!--:md-page-options="[5, 10, 25, 50]"-->
+                    <!--@pagination=""></md-table-pagination>-->
         </md-table>
 
         <!--<ul v-show="authorized">-->
@@ -49,7 +58,11 @@ export default{
       todos: [],
       authorized: false,
       token: null,
-      from: 0
+      from: 0,
+      to: 0,
+      total: 0,
+      perPage: 0,
+      page: 1
     }
   },
   created () {
@@ -77,6 +90,9 @@ export default{
         console.log(response.data)
         this.todos = response.data.data
         this.from = response.data.from
+        this.to = response.data.to
+        this.total = response.data.total
+        this.perPage = response.data.per_page
       }, (response) => {
         console.log(response.data)
         // TODO only if HTTP response code is 401
