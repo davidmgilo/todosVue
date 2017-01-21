@@ -6,12 +6,33 @@
         <div v-show="authorized">
             <md-button class="md-raised md-primary" @click="logout">Logout</md-button>
         </div>
-        <ul v-show="authorized">
-            <li v-for="(todo, index) in todos">
-                {{ todo.name }}
-            </li>
-        </ul>
-    </div>
+
+        <md-table v-once v-show="authorized">
+            <md-table-header>
+                <md-table-row>
+                    <md-table-head>#</md-table-head>
+                    <md-table-head>Name</md-table-head>
+                    <md-table-head>Priority</md-table-head>
+                    <md-table-head>Done</md-table-head>
+                </md-table-row>
+            </md-table-header>
+
+            <md-table-body>
+                <md-table-row v-for="(todo, index) in todos">
+                    <md-table-cell>{{index + from}}</md-table-cell>
+                    <md-table-cell>{{todo.name}}</md-table-cell>
+                    <md-table-cell>{{todo.priority}}</md-table-cell>
+                    <md-table-cell>{{todo.done}}</md-table-cell>
+                </md-table-row>
+            </md-table-body>
+        </md-table>
+
+        <!--<ul v-show="authorized">-->
+            <!--<li v-for="(todo, index) in todos">-->
+                <!--{{ todo.name }}-->
+            <!--</li>-->
+        <!--</ul>-->
+    </div>ss
 </template>
 <style>
 </style>
@@ -27,7 +48,8 @@ export default{
     return {
       todos: [],
       authorized: false,
-      token: null
+      token: null,
+      from: 0
     }
   },
   created () {
@@ -54,6 +76,7 @@ export default{
       this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
         console.log(response.data)
         this.todos = response.data.data
+        this.from = response.data.from
       }, (response) => {
         console.log(response.data)
         // TODO only if HTTP response code is 401
