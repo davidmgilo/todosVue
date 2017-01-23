@@ -22,7 +22,9 @@
                     <md-table-cell>{{index + from}}</md-table-cell>
                     <md-table-cell>{{todo.name}}</md-table-cell>
                     <md-table-cell>{{todo.priority}}</md-table-cell>
-                    <md-table-cell>{{todo.done}}</md-table-cell>
+                    <md-table-cell>
+                        <!--<md-switch v-model="checked1" id="my-test1" name="my-test1" class="md-primary">Primary Color</md-switch>-->
+                        {{todo.done}}</md-table-cell>
                 </md-table-row>
             </md-table-body>
 
