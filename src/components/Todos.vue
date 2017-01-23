@@ -41,7 +41,7 @@
                 <!--{{ todo.name }}-->
             <!--</li>-->
         <!--</ul>-->
-    </div>ss
+    </div>
 </template>
 <style>
 </style>
