@@ -23,19 +23,19 @@
                     <md-table-cell>{{todo.name}}</md-table-cell>
                     <md-table-cell>{{todo.priority}}</md-table-cell>
                     <md-table-cell>
-                        <md-switch v-model="todo.done" id="my-test1" name="my-test1" class="md-primary"></md-switch>
+                        <md-switch v-model="todo.done" id="done" name="done" class="md-primary"></md-switch>
                     </md-table-cell>
                 </md-table-row>
             </md-table-body>
 
-            <!--<md-table-pagination-->
-                    <!--:md-size="perPage"-->
-                    <!--:md-total="total"-->
-                    <!--:md-page="page"-->
-                    <!--md-label="Tasks"-->
-                    <!--md-separator="of"-->
-                    <!--:md-page-options="false"-->
-                    <!--@pagination=""></md-table-pagination>-->
+            <md-table-pagination
+                    :md-size=perPage
+                    :md-total=total
+                    :md-page=page
+                    md-label="Tasks"
+                    md-separator="of"
+                    :md-page-options="[5, 15, 25, 50]"
+                    @pagination=""></md-table-pagination>
         </md-table>
 
         <!--<ul v-show="authorized">-->
@@ -68,7 +68,7 @@ export default{
     }
   },
   created () {
-    var token = this.extractToken(document.location.hash)
+    if (document.location.hash) var token = this.extractToken(document.location.hash)
     if (token) this.saveToken(token)
     if (this.token == null) {
       this.token = this.fetchToken()
@@ -127,8 +127,7 @@ export default{
       window.localStorage.setItem(STORAGE_KEY, token)
     },
     extractToken: function (hash) {
-      var match = hash.match(/access_token=(\w+)/)
-      return !!match && match[1]
+      return hash.match(/#(?:access_token)=([\S\s]*?)&/)[1]
     }
   }
 }
