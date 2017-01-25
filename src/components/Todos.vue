@@ -7,7 +7,7 @@
             <md-button class="md-raised md-primary" @click="logout">Logout</md-button>
         </div>
 
-        <md-table v-once v-show="authorized">
+        <md-table v-show="authorized">
             <md-table-header>
                 <md-table-row>
                     <md-table-head>#</md-table-head>
@@ -23,8 +23,8 @@
                     <md-table-cell>{{todo.name}}</md-table-cell>
                     <md-table-cell>{{todo.priority}}</md-table-cell>
                     <md-table-cell>
-                        <md-switch v-model="todo.done" id="my-test1" name="my-test1" class="md-primary">Primary Color</md-switch>
-                        {{todo.done}}</md-table-cell>
+                        <md-switch v-model="todo.done" id="my-test1" name="my-test1" class="md-primary"></md-switch>
+                    </md-table-cell>
                 </md-table-row>
             </md-table-body>
 
