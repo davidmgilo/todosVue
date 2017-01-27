@@ -21,7 +21,15 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  next()
+  console.log(to)
+  console.log(from)
+  if (to.path === '/login') next()
+  var logged = false
+  if (logged) {
+    next()
+  } else {
+    next('/login')
+  }
 })
 
 Vue.use(VueMaterial)
