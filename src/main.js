@@ -20,6 +20,10 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  next()
+})
+
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 
