@@ -21,15 +21,18 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
+  if (to.meta.auth === true) {
+    var logged = false
+    if (logged) {
+      next()
+    } else {
+      next('/login')
+    }
+  } else {
+    next()
+  }
   console.log(to)
   console.log(from)
-  if (to.path === '/login') next()
-  var logged = false
-  if (logged) {
-    next()
-  } else {
-    next('/login')
-  }
 })
 
 Vue.use(VueMaterial)
