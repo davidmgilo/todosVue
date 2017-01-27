@@ -26,6 +26,10 @@
             <md-icon>send</md-icon>
             <router-link to="/tokens">Tokens</router-link>
 
+          <md-list-item @click="toggleLeftSidenav">
+            <md-icon>send</md-icon>
+            <router-link to="/profile">Profile</router-link>
+
             <md-divider class="md-inset"></md-divider>
           </md-list-item>
 
