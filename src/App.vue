@@ -25,6 +25,7 @@
           <md-list-item @click="toggleLeftSidenav">
             <md-icon>send</md-icon>
             <router-link to="/tokens">Tokens</router-link>
+          </md-list-item>
 
           <md-list-item @click="toggleLeftSidenav">
             <md-icon>send</md-icon>
