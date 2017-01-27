@@ -9,17 +9,11 @@ import VueRouter from 'vue-router'
 import Axios from 'axios'
 import querystring from 'querystring'
 
-import Todos from 'components/Todos'
-import Tokens from 'components/Tokens'
-
 window.axios = Axios
 window.querystring = querystring
 Vue.prototype.$http = Axios
 
-const routes = [
-  { path: '/todos', component: Todos },
-  { path: '/tokens', component: Tokens }
-]
+import routes from './routes.js'
 
 const router = new VueRouter({
   mode: 'history',
