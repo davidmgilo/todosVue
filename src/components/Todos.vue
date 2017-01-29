@@ -23,6 +23,8 @@
                 </md-table-row>
             </md-table-header>
 
+            <md-spinner :md-size="150" md-indeterminate  class="md-accent" v-show="connecting" ></md-spinner>
+
             <md-table-body>
                 <md-table-row v-for="(todo, index) in todos">
                     <md-table-cell>{{index + from}}</md-table-cell>
@@ -70,11 +72,15 @@ export default{
       to: 0,
       total: 0,
       perPage: 0,
-      page: 1
+      page: 1,
+      connecting: true
     }
   },
   created () {
-    this.fetchData()
+    var that = this
+    setTimeout(function () {
+      that.fetchData()
+    }, 500)
   },
   methods: {
     fetchData: function () {
@@ -84,6 +90,7 @@ export default{
       this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(STORAGE_KEY)
 
       this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
+        this.connecting = false
         console.log(response.data)
         this.todos = response.data.data
         this.from = response.data.from
@@ -91,6 +98,7 @@ export default{
         this.total = response.data.total
         this.perPage = response.data.per_page
       }, (response) => {
+        this.connecting = false
         console.log(response.data)
         // TODO only if HTTP response code is 401
         // TODO mostrar amb una bona UI/UE error -> sweetalert
