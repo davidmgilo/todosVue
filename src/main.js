@@ -22,7 +22,7 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   if (to.meta.auth === true) {
-    var logged = false
+    var logged = true
     if (logged) {
       next()
     } else {
