@@ -1,6 +1,18 @@
 <template>
     <div>
         <md-table-card>
+
+            <md-toolbar>
+                <h1 class="md-title">Todos</h1>
+                <md-button class="md-icon-button">
+                    <md-icon>filter_list</md-icon>
+                </md-button>
+
+                <md-button class="md-icon-button">
+                    <md-icon>search</md-icon>
+                </md-button>
+            </md-toolbar>
+
         <md-table>
             <md-table-header>
                 <md-table-row>
