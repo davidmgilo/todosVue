@@ -1,5 +1,6 @@
 <template>
     <div>
+        <md-table-card>
         <md-table>
             <md-table-header>
                 <md-table-row>
@@ -21,6 +22,9 @@
                 </md-table-row>
             </md-table-body>
 
+
+        </md-table>
+
             <md-table-pagination
                     :md-size=perPage
                     :md-total=total
@@ -28,8 +32,9 @@
                     md-label="Tasks"
                     md-separator="of"
                     :md-page-options="[5, 15, 25, 50]"
-                    @pagination=""></md-table-pagination>
-        </md-table>
+                    @pagination="onPagination"></md-table-pagination>
+
+        </md-table-card>
 
         <!--<ul v-show="authorized">-->
             <!--<li v-for="(todo, index) in todos">-->
@@ -79,6 +84,9 @@ export default{
         // TODO mostrar amb una bona UI/UE error -> sweetalert
         // this.authorized = false
       })
+    },
+    onPagination: function () {
+
     }
 
   }
