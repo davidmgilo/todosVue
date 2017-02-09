@@ -55,7 +55,8 @@ var STORAGE_KEY = 'todosvue_token'
 export default {
   data () {
     return {
-      avatar: 'https://s.gravatar.com/avatar/74fbfbc098b6104178909d663e37c1cf?s=80',
+     // avatar: 'https://s.gravatar.com/avatar/74fbfbc098b6104178909d663e37c1cf?s=80',
+      avatar: '',
       id: null,
       name: null,
       email: null,
@@ -84,6 +85,7 @@ export default {
         this.email = response.data.email
         this.createdAt = response.data.created_at
         this.updatedAt = response.data.updated_at
+        this.avatar = this.fetchAvatar()
       }, (response) => {
         this.connecting = false
         this.showConnectionError()
@@ -91,6 +93,9 @@ export default {
     },
     showConnectionError () {
       this.$refs.connectionError.open()
+    },
+    fetchAvatar () {
+      return 'https://s.gravatar.com/avatar/' + window.md5(this.email) + '?s=80'
     }
   }
 }

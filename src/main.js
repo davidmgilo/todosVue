@@ -8,10 +8,13 @@ import 'vue-material/dist/vue-material.css'
 import VueRouter from 'vue-router'
 import Axios from 'axios'
 import querystring from 'querystring'
+import md5 from 'js-md5'
 
 window.axios = Axios
 window.querystring = querystring
 Vue.prototype.$http = Axios
+
+window.md5 = md5
 
 import routes from './routes.js'
 import auth from './auth'
