@@ -11,19 +11,19 @@ const routes = [
   },
   { path: '/tokens',
     component: Tokens,
-    auth: false
+    meta: { auth: false }
   },
   { path: '/profile',
     component: Profile,
-    auth: true
+    meta: { auth: true }
   },
   { path: '/login',
     component: Login,
-    auth: false
+    meta: { auth: false }
   },
   { path: '*',
     component: NotFound,
-    auth: false
+    meta: { auth: false }
   }
 ]
 
