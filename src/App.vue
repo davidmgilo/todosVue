@@ -34,6 +34,13 @@
             <md-divider class="md-inset"></md-divider>
           </md-list-item>
 
+          <md-list-item @click="toggleLeftSidenav">
+            <md-icon>send</md-icon>
+            <router-link to="/login">Login/Logout</router-link>
+
+            <md-divider class="md-inset"></md-divider>
+          </md-list-item>
+
           <md-list-item>
             <md-avatar>
               <img src="https://placeimg.com/40/40/people/5" alt="People">
