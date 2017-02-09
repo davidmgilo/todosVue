@@ -14,6 +14,7 @@ window.querystring = querystring
 Vue.prototype.$http = Axios
 
 import routes from './routes.js'
+import auth from './auth'
 
 const router = new VueRouter({
   mode: 'history',
@@ -21,18 +22,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (to.meta.auth === true) {
-    var logged = true
-    if (logged) {
-      next()
-    } else {
-      next('/login')
-    }
+  if (to.meta.auth === true && !auth.loggedIn()) {
+    next('/login')
   } else {
     next()
   }
-  console.log(to)
-  console.log(from)
 })
 
 Vue.use(VueMaterial)
