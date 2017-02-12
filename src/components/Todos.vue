@@ -29,7 +29,9 @@
                 <md-table-row v-for="(todo, index) in todos">
                     <md-table-cell>{{index + from}}</md-table-cell>
                     <md-table-cell>{{todo.name}}</md-table-cell>
-                    <md-table-cell>{{todo.priority}}</md-table-cell>
+                    <md-table-cell>
+                        <md-progress :md-progress="todo.priority*10"></md-progress>
+                    </md-table-cell>
                     <md-table-cell>
                         <md-switch v-model="todo.done" id="done" name="done" class="md-primary"></md-switch>
                     </md-table-cell>
