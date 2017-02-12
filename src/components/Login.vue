@@ -14,9 +14,7 @@
 <style>
 </style>
 <script>
-var STORAGE_KEY = 'todosvue_token'
-var AUTH_CLIENT_ID = '4'
-var AUTH_REDIRECT_URI = 'http://localhost:8095/login'
+import todosVue from '../todosVue'
 
 export default{
   data () {
@@ -40,21 +38,21 @@ export default{
       return hash.match(/#(?:access_token)=([\S\s]*?)&/)[1]
     },
     saveToken: function (token) {
-      window.localStorage.setItem(STORAGE_KEY, token)
+      window.localStorage.setItem(todosVue.STORAGE_KEY, token)
     },
     fetchToken: function () {
-      return window.localStorage.getItem(STORAGE_KEY)
+      return window.localStorage.getItem(todosVue.STORAGE_KEY)
     },
     logout: function () {
-      window.localStorage.removeItem(STORAGE_KEY)
+      window.localStorage.removeItem(todosVue.STORAGE_KEY)
       this.authorized = false
     },
     login: function () {
       console.log('Do connect here!')
      // var query = 'client_id=' + AUTH_CLIENT_ID + '&redirect_uri=' + window.location + '&response_type=token&scope='
       query = {
-        client_id: AUTH_CLIENT_ID,
-        redirect_uri: AUTH_REDIRECT_URI,
+        client_id: todosVue.AUTH_CLIENT_ID,
+        redirect_uri: todosVue.AUTH_REDIRECT_URI,
         response_type: 'token',
         scope: ''
 
