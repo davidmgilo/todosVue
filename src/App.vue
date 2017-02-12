@@ -10,6 +10,10 @@
 
       <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
         <md-toolbar class="md-large">
+          <md-avatar v-show="isLogged">
+            <img src="./assets/logo.png" alt="Avatar">
+          </md-avatar>
+
           <div class="md-toolbar-container">
             <h3 class="md-title">Todos</h3>
           </div>
@@ -61,12 +65,20 @@
 </template>
 
 <script>
-import Hello from './components/Hello'
+import auth from './auth'
 
 export default {
   name: 'app',
-  components: {
-    Hello
+  data () {
+    return {
+      logged: false
+    }
+  },
+  computed: {
+    isLogged: function () {
+      this.logged = auth.loggedIn()
+      return this.logged
+    }
   },
   methods: {
     toggleLeftSidenav () {
