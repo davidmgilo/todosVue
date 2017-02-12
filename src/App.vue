@@ -76,8 +76,7 @@ export default {
   },
   computed: {
     isLogged: function () {
-      this.logged = auth.loggedIn()
-      return this.logged
+      return auth.loggedIn()
     }
   },
   methods: {
