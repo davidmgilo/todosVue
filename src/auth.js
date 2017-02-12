@@ -1,8 +1,7 @@
-
-var STORAGE_KEY = 'todosvue_token'
+import todosVue from './todosVue'
 
 export default {
   loggedIn () {
-    return !!window.localStorage.getItem(STORAGE_KEY)
+    return !!window.localStorage.getItem(todosVue.STORAGE_KEY)
   }
 }
