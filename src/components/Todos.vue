@@ -62,9 +62,7 @@
 <style>
 </style>
 <script>
-// Local storage: Session Storage
-
-var STORAGE_KEY = 'todosvue_token'
+import todosVue from '../todosVue'
 
 export default{
   data () {
@@ -89,7 +87,7 @@ export default{
       return this.fetchPage(1)
     },
     fetchPage: function (page) {
-      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(STORAGE_KEY)
+      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(todosVue.STORAGE_KEY)
 
       this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
         this.connecting = false

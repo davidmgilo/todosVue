@@ -10,7 +10,7 @@
 
       <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
         <md-toolbar class="md-large">
-          <md-avatar v-show="isLogged">
+          <md-avatar v-if="isLogged">
             <img src="./assets/logo.png" alt="Avatar">
           </md-avatar>
 
@@ -69,11 +69,6 @@ import auth from './auth'
 
 export default {
   name: 'app',
-  data () {
-    return {
-      logged: false
-    }
-  },
   computed: {
     isLogged: function () {
       return auth.loggedIn()
