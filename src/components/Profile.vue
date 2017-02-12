@@ -14,22 +14,22 @@
             <form novalidate @submit.stop.prevent="submit">
                 <md-input-container>
                     <label>Name</label>
-                    <md-input v-model="name" placeholder="Put your name here"></md-input>
+                    <md-input v-model="name" placeholder="Put your name here" v-show="!connecting"></md-input>
                 </md-input-container>
 
                 <md-input-container>
                     <label>Email</label>
-                    <md-input v-model="email" placeholder="Put your email here"></md-input>
+                    <md-input v-model="email" placeholder="Put your email here" v-show="!connecting"></md-input>
                 </md-input-container>
 
                 <md-input-container>
                     <label>Created at</label>
-                    <md-input v-model="createdAt" placeholder="Date here"></md-input>
+                    <md-input v-model="createdAt" placeholder="Date here" v-show="!connecting"></md-input>
                 </md-input-container>
 
                 <md-input-container>
                     <label>Updated at</label>
-                    <md-input v-model="updatedAt" placeholder="Date at here"></md-input>
+                    <md-input v-model="updatedAt" placeholder="Date at here" v-show="!connecting"></md-input>
                 </md-input-container>
             </form>
         </md-card-content>
@@ -49,8 +49,7 @@
 <style>
 </style>
 <script>
-var API_PROFILE_URL = 'http://todos.dev:8080/api/v1/user'
-var STORAGE_KEY = 'todosvue_token'
+import todosVue from '../todosVue'
 
 export default {
   data () {
@@ -67,7 +66,7 @@ export default {
   },
   computed: {
     avatarHash: function () {
-      return '74fbfbc098b6104178909d663e37c1cf'
+      return window.md5(this.email)
     }
   },
   created () {
@@ -76,8 +75,8 @@ export default {
   },
   methods: {
     fetchUserProfile: function () {
-      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(STORAGE_KEY)
-      this.$http.get(API_PROFILE_URL).then((response) => {
+      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(todosVue.STORAGE_KEY)
+      this.$http.get(todosVue.API_PROFILE_URL).then((response) => {
         this.connecting = false
         console.log(response.data)
         this.id = response.data.id
@@ -95,7 +94,7 @@ export default {
       this.$refs.connectionError.open()
     },
     fetchAvatar () {
-      return 'https://s.gravatar.com/avatar/' + window.md5(this.email) + '?s=80'
+      return 'https://s.gravatar.com/avatar/' + this.avatarHash + '?s=80'
     }
   }
 }
