@@ -31,6 +31,7 @@ export default{
 
     if (this.token) {
       this.authorized = true
+      this.$emit('eventLogin')
     }
   },
   methods: {
@@ -46,6 +47,7 @@ export default{
     logout: function () {
       window.localStorage.removeItem(todosVue.STORAGE_KEY)
       this.authorized = false
+      this.$emit('eventLogout')
     },
     login: function () {
       console.log('Do connect here!')
