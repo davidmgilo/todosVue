@@ -3,6 +3,7 @@ import Tokens from 'components/Tokens'
 import Profile from 'components/Profile'
 import NotFound from 'components/NotFound'
 import Login from 'components/Login'
+import DeviceInfo from 'components/DeviceInfo.vue'
 
 const routes = [
   { path: '/todos',
@@ -15,6 +16,10 @@ const routes = [
   },
   { path: '/profile',
     component: Profile,
+    meta: { auth: true }
+  },
+  { path: '/device',
+    component: DeviceInfo,
     meta: { auth: true }
   },
   { path: '/login',
