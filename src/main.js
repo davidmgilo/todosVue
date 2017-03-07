@@ -37,6 +37,22 @@ router.beforeEach((to, from, next) => {
 Vue.use(VueMaterial)
 Vue.use(VueRouter)
 
+// Vue material themes
+Vue.material.registerTheme('custom', {
+  primary: 'light-green',
+  accent: {
+    color: 'deep-orange',
+    hue: 'A700'
+  },
+  warn: 'red',
+  background: {
+    color: 'amber',
+    hue: 100
+  }
+})
+// Apply themes
+Vue.material.setCurrentTheme('custom')
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
