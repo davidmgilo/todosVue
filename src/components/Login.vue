@@ -60,8 +60,8 @@ export default{
 
       }
       var query = window.querystring.stringify(query)
-      console.log('http://todos.dev:8080/oauth/authorize?' + query)
-      window.location.replace('http://todos.dev:8080/oauth/authorize?' + query)
+      console.log('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
+      window.location.replace('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
     }
   }
 }

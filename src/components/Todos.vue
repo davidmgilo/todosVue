@@ -89,7 +89,7 @@ export default{
     fetchPage: function (page) {
       this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + window.localStorage.getItem(todosVue.STORAGE_KEY)
 
-      this.$http.get('http://todos.dev:8080/api/v1/task?page=' + page).then((response) => {
+      this.$http.get('http://todosbackend.davidmartinez.2dam.acacha.org:8080/api/v1/task?page=' + page).then((response) => {
         this.connecting = false
         console.log(response.data)
         this.todos = response.data.data

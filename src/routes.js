@@ -4,6 +4,7 @@ import Profile from 'components/Profile'
 import NotFound from 'components/NotFound'
 import Login from 'components/Login'
 import DeviceInfo from 'components/DeviceInfo.vue'
+import Cordova from 'components/Cordova.vue'
 
 const routes = [
   { path: '/todos',
@@ -24,6 +25,10 @@ const routes = [
   },
   { path: '/login',
     component: Login,
+    meta: { auth: false }
+  },
+  { path: '/cordova',
+    component: Cordova,
     meta: { auth: false }
   },
   { path: '*',
