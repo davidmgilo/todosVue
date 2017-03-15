@@ -84,6 +84,9 @@ import auth from './auth'
 
 export default {
   name: 'app',
+  created () {
+    console.log(window.location.href)
+  },
   data () {
     return {
       logged: false
