@@ -11,7 +11,7 @@
       document.addEventListener('deviceready', this.onDeviceReady, false)
     },
     beforeDestroy () {
-      document.addEventListener('deviceready', this.onBeforeDestroy, false)
+      document.removeEventListener('deviceready', this.onBeforeDestroy, false)
     },
     methods: {
       onDeviceReady () {
