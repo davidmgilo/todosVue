@@ -60,8 +60,28 @@ export default{
 
       }
       var query = window.querystring.stringify(query)
-      console.log('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
-      window.location.replace('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
+      if (window.cordova && window.device.platform !== 'browser') {
+        var oAuthWindow = window.cordova.InAppBrowser.open('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query, '_blank', 'location=yes')
+        var login = this
+        oAuthWindow.addEventListener('loadstart', function (e) {
+          var url = e.url
+          var hash = null
+          if (url.split('#')[1]) {
+            hash = url.split('#')[1]
+          }
+          if (hash) {
+            var accessToken = login.extractToken('#' + String(hash))
+            if (accessToken) {
+              login.saveToken(accessToken)
+              login.authorized = true
+              oAuthWindow.close()
+            }
+          }
+        })
+      } else {
+        console.log('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
+        window.location.replace('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
+      }
     }
   }
 }
