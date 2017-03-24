@@ -81,11 +81,13 @@
 
 <script>
 import auth from './auth'
+import notifications from './services/notifications'
 
 export default {
   name: 'app',
   created () {
     console.log(window.location.href)
+    document.addEventListener('deviceready', this.onDeviceReady, false)
   },
   data () {
     return {
@@ -93,6 +95,10 @@ export default {
     }
   },
   methods: {
+    onDeviceReady () {
+      console.log('Working on platform: ' + window.device.platform)
+      notifications.enable()
+    },
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
     },
@@ -110,4 +116,4 @@ export default {
 </script>
 
 <style>
-/style>
+</style>
