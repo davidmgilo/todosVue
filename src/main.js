@@ -21,6 +21,8 @@ window.md5 = md5
 import routes from './routes.js'
 import auth from './auth'
 
+import 'animate.css/animate.css'
+
 const router = new VueRouter({
   mode: 'history',
   routes

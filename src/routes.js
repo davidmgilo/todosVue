@@ -5,6 +5,7 @@ import NotFound from 'components/NotFound'
 import Login from 'components/Login'
 import DeviceInfo from 'components/DeviceInfo.vue'
 import Cordova from 'components/Cordova.vue'
+import Notifications from 'components/Notifications'
 
 const routes = [
   { path: '/todos',
@@ -29,6 +30,11 @@ const routes = [
   },
   { path: '/cordova',
     component: Cordova,
+    meta: { auth: false }
+  },
+  { path: '/notifications',
+    component: Notifications,
+    props: Notifications.get(),
     meta: { auth: false }
   },
   { path: '*',
