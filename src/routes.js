@@ -7,6 +7,8 @@ import DeviceInfo from 'components/DeviceInfo.vue'
 import Cordova from 'components/Cordova.vue'
 import Notifications from 'components/Notifications'
 
+// import notif from './services/notifications.js'
+
 const routes = [
   { path: '/todos',
     component: Todos,
@@ -34,7 +36,7 @@ const routes = [
   },
   { path: '/notifications',
     component: Notifications,
-    props: Notifications.get(),
+    // props: notif.get(),
     meta: { auth: false }
   },
   { path: '*',
