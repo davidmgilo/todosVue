@@ -6,8 +6,17 @@
 
         <md-card-content>
                 <md-button class="md-raised md-primary" @click.native="login" v-show="!authorized">Login</md-button>
-                <md-button class="md-raised md-primary" @click.native="logout" v-show="authorized">Logout</md-button>
+                <md-button class="md-raised md-primary" @click.native="initlogout" v-show="authorized">Logout</md-button>
         </md-card-content>
+
+        <md-dialog-confirm
+                md-title="Logout"
+                md-content="Are you sure you want to logout?"
+                md-ok-text="Ok"
+                md-cancel-text="Cancel"
+                @close="onCloseSureToLogout"
+                ref="sureToLogout">
+        </md-dialog-confirm>
     </md-card>
 
 </template>
@@ -82,6 +91,15 @@ export default{
         console.log('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
         window.location.replace('http://todosbackend.davidmartinez.2dam.acacha.org:8080/oauth/authorize?' + query)
       }
+    },
+    initlogout: function () {
+      this.openDialog('sureToLogout')
+    },
+    openDialog: function (ref) {
+      this.$refs[ref].open()
+    },
+    onCloseSureToLogout: function (type) {
+      if (type === 'ok') this.logout()
     }
   }
 }
