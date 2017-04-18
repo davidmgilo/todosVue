@@ -57,6 +57,12 @@
           </md-list-item>
 
           <md-list-item>
+            <router-link @click.native="toggleLeftSidenav" exact to="/exit"><md-icon>close</md-icon><span>Exit</span></router-link>
+
+            <md-divider class="md-inset"></md-divider>
+          </md-list-item>
+
+          <md-list-item>
             <md-avatar>
               <img src="https://placeimg.com/40/40/people/5" alt="People">
             </md-avatar>

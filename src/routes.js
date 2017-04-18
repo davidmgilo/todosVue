@@ -6,6 +6,7 @@ import Login from 'components/Login'
 import DeviceInfo from 'components/DeviceInfo.vue'
 import Cordova from 'components/Cordova.vue'
 import Notifications from 'components/Notifications'
+import Exit from 'components/Exit.vue'
 
 // import notif from './services/notifications.js'
 
@@ -40,6 +41,10 @@ const routes = [
   { path: '/notifications',
     component: Notifications,
     // props: notif.get(),
+    meta: { auth: false }
+  },
+  { path: '/exit',
+    component: Exit,
     meta: { auth: false }
   },
   { path: '*',
