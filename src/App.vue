@@ -98,6 +98,7 @@ export default {
     onDeviceReady () {
       console.log('Working on platform: ' + window.device.platform)
       notifications.enable()
+      this.overrideAlerts()
     },
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()
@@ -110,6 +111,18 @@ export default {
     },
     isLogged () {
       this.logged = auth.loggedIn()
+    },
+    overrideAlerts () {
+      if (navigator.notification) { // Override default HTML alert with native dialog
+        window.alert = function (message) {
+          navigator.notification.alert(
+                  message,    // message
+                  null,       // callback
+                  'Alert', // title
+                  'OK'        // buttonName
+          )
+        }
+      }
     }
   }
 }

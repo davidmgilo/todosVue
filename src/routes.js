@@ -10,6 +10,9 @@ import Notifications from 'components/Notifications'
 // import notif from './services/notifications.js'
 
 const routes = [
+  { path: '',
+    redirect: '/todos'
+  },
   { path: '/todos',
     component: Todos,
     meta: { auth: true }
