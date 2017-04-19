@@ -8,7 +8,7 @@
         <h2 class="md-title">Todos</h2>
       </md-toolbar>
 
-      <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')">
+      <md-sidenav class="md-left" ref="leftSidenav" @open="open('Left')" @close="close('Left')" md-swipeable>
         <md-toolbar class="md-large">
           <md-avatar v-if="logged">
             <img src="./assets/logo.png" alt="Avatar">

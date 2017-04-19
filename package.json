@@ -21,6 +21,7 @@
     "roboto-fontface": "^0.7.0",
     "vue": "^2.2.6",
     "vue-material": "^0.7.1",
+    "vue-pull-refresh": "^0.2.0",
     "vue-router": "^2.4.0"
   },
   "devDependencies": {
