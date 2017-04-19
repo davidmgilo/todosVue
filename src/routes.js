@@ -14,6 +14,9 @@ const routes = [
   { path: '',
     redirect: '/todos'
   },
+  { path: '/index.html',
+    redirect: '/todos'
+  },
   { path: '/todos',
     component: Todos,
     meta: { auth: true }
