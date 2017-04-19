@@ -12,16 +12,16 @@
                         'Do you want to quit?',
                         this.onConfirmQuit,
                         'QUIT',
-                        ['OK','Cancel']
+                        ['OK', 'Cancel']
           )
         },
         onConfirmQuit (button) {
           if (button === '1') {
-              if (navigator.app) {
-                  navigator.app.exitApp();
-              } else if (navigator.device) {
-                  navigator.device.exitApp();
-              }
+            if (navigator.app) {
+              navigator.app.exitApp()
+            } else if (navigator.device) {
+              navigator.device.exitApp()
+            }
           }
         }
       }
