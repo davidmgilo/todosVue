@@ -1,5 +1,5 @@
 <template>
-    <vue-pull-refresh :on-refresh="onRefresh">
+    <vue-pull-refresh :on-refresh="onRefresh" :config="configRefresh">
         <md-table-card>
 
             <md-toolbar>
@@ -77,7 +77,13 @@ export default{
       total: 0,
       perPage: 0,
       page: 1,
-      connecting: true
+      connecting: true,
+      configRefresh: {
+        errorLabel: 'Oops, something went wrong',
+        startLabel: 'Swipe',
+        readyLabel: 'Release',
+        loadingLabel: 'Refreshing'
+      }
     }
   },
   created () {
@@ -118,8 +124,10 @@ export default{
         setTimeout(function () {
           resolve()
         }, 500)
-      }).then(function () {
+      }).then(() => {
         this.fetchPage(1)
+      }).catch(() => {
+        this.showConnectionError()
       })
     }
 
