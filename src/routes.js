@@ -14,7 +14,7 @@ const routes = [
   { path: '',
     redirect: '/todos'
   },
-  { path: '/index.html',
+  { path: '/',
     redirect: '/todos'
   },
   { path: '/todos',
