@@ -63,7 +63,7 @@
 </style>
 <script>
 import todosVue from '../todosVue'
-import VuePullRefresh from 'vue-pull-refresh';
+import VuePullRefresh from 'vue-pull-refresh'
 
 export default{
   components: {
@@ -112,15 +112,15 @@ export default{
     onPagination: function () {
 
     },
-    onRefresh: function() {
+    onRefresh: function () {
       this.connecting = true
       return new Promise(function (resolve, reject) {
         setTimeout(function () {
-          resolve();
-        }, 500);
-      }).then(function() {
-          this.fetchPage(1)
-      });
+          resolve()
+        }, 500)
+      }).then(function () {
+        this.fetchPage(1)
+      })
     }
 
   }
