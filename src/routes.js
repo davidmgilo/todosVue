@@ -14,6 +14,10 @@ const routes = [
   { path: '',
     redirect: '/todos'
   },
+  { path: '/android_asset/www/index.html',
+    component: Login,
+    meta: { auth: false }
+  },
   { path: '/',
     redirect: '/todos'
   },
