@@ -6,6 +6,7 @@ import Login from 'components/Login'
 import DeviceInfo from 'components/DeviceInfo.vue'
 import Cordova from 'components/Cordova.vue'
 import Notifications from 'components/Notifications'
+import Contact from 'components/Contact.vue'
 import Exit from 'components/Exit.vue'
 
 // import notif from './services/notifications.js'
@@ -53,6 +54,10 @@ const routes = [
   { path: '/exit',
     component: Exit,
     meta: { auth: false }
+  },
+  { path: '/contacts',
+    component: Contact,
+    meta: { auth: true }
   },
   { path: '*',
     component: NotFound,
