@@ -40,11 +40,12 @@ export default {
         return
       }
       var contact = navigator.contacts.create()
-      var phoneNumbers = []
-      phoneNumbers[0] = new window.ContactField('mobile', this.numero, true)
-      contact.phoneNumbers = phoneNumbers
+      // var phoneNumbers = []
+      // phoneNumbers[0] = new window.ContactField('mobile', this.numero, true)
+      // contact.phoneNumbers = phoneNumbers
       contact.displayName = this.name
-      contact.name = contact.nickname = this.name
+      // contact.name =
+      contact.nickname = this.name
       contact.save(contactSuccess, contactError)
 
       function contactSuccess () {
