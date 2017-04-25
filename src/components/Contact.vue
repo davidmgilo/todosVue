@@ -39,22 +39,21 @@ export default {
         this.showContactError()
         return
       }
-      var contact = navigator.contacts.create()
+      var contact = navigator.contacts.create({'displayName': this.name})
+      console.log(contact)
       // var phoneNumbers = []
       // phoneNumbers[0] = new window.ContactField('mobile', this.numero, true)
       // contact.phoneNumbers = phoneNumbers
-      contact.displayName = this.name
-      // contact.name =
-      contact.nickname = this.name
-      contact.save(contactSuccess, contactError)
-
-      function contactSuccess () {
-        window.alert('Contact saved!')
-      }
-
-      function contactError (message) {
-        window.alert('Error: ' + message)
-      }
+//      contact.displayName = this.name
+//      // contact.name =
+//      contact.nickname = this.name
+//      console.log(contact)
+//      var name = new window.ContactName()
+//      name.givenName = 'Jane'
+//      name.familyName = 'Doe'
+//      contact.name = name
+//      console.log(contact)
+      contact.save()
     },
     showContactError: function () {
       this.$refs.contactError.open()
