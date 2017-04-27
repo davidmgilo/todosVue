@@ -9,14 +9,14 @@
       methods: {
         onDeviceReady () {
           navigator.notification.confirm(
-                        'Do you want to quit?',
-                        this.onConfirmQuit,
-                        'QUIT',
-                        ['OK', 'Cancel']
+            'Do you want to quit?',
+            this.onConfirmQuit,
+            'QUIT',
+            ['OK', 'Cancel']
           )
         },
         onConfirmQuit (button) {
-          if (button === '1') {
+          if (button === 1) {
             navigator.app.exitApp()
           }
         }
