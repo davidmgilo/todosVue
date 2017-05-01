@@ -46,7 +46,15 @@ export default {
       contact.phoneNumbers = phoneNumbers
       contact.displayName = this.name
       contact.nickname = this.name
-      contact.save()
+      contact.save(contactSuccess, contactError)
+
+      function contactSuccess () {
+        window.alert('Contact saved!')
+      }
+
+      function contactError (message) {
+        window.alert('Error: ' + message)
+      }
     },
     showContactError: function () {
       this.$refs.contactError.open()
