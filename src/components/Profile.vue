@@ -1,7 +1,7 @@
 <template>
     <md-card md-with-hover>
         <md-card-header>
-            <md-avatar>
+            <md-avatar @click.native="changePicture">
                 <img :src="avatar" alt="David Martinez">
             </md-avatar>
 
@@ -95,6 +95,26 @@ export default {
     },
     fetchAvatar () {
       return 'https://s.gravatar.com/avatar/' + this.avatarHash + '?s=80'
+    },
+    changePicture: function() {
+      if (!navigator.camera) {
+        alert("Camera API not supported")
+        return
+      }
+      var options =   {   quality: 50,
+        destinationType: window.Camera.DestinationType.DATA_URL,
+        sourceType: 1,      // 0:Photo Library, 1=Camera, 2=Saved Album
+        encodingType: 0     // 0=JPG 1=PNG
+      }
+      navigator.camera.getPicture(
+        function(imgData) {
+          avatar = "data:image/jpeg;base64,"+imgData
+        },
+        function() {
+          alert('Error taking picture', 'Error')
+        },
+        options)
+      return false
     }
   }
 }
