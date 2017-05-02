@@ -57,14 +57,20 @@ export default {
         this.showGeoLocationError()
         return
       }
-      navigator.geolocation.getCurrentPosition(onSuccess, onError)
+      var options = {
+        timeout: 5000
+      }
+
+      navigator.geolocation.getCurrentPosition(onSuccess, onError, options)
 
       function onError (error) {
+        console.log(error)
         window.alert('code: ' + error.code + '\n' +
               'message: ' + error.message + '\n')
       }
 
       function onSuccess (position) {
+        console.log(position)
         window.alert('Latitude: ' + position.coords.latitude + '\n' +
               'Longitude: ' + position.coords.longitude + '\n' +
               'Altitude: ' + position.coords.altitude + '\n' +
