@@ -105,6 +105,7 @@ export default {
       console.log('Working on platform: ' + window.device.platform)
       notifications.enable()
       this.overrideAlerts()
+      window.FastClick.attach(document.body)
     },
     toggleLeftSidenav () {
       this.$refs.leftSidenav.toggle()

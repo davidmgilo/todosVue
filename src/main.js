@@ -12,6 +12,8 @@ import Axios from 'axios'
 import querystring from 'querystring'
 import md5 from 'js-md5'
 
+import 'fastclick/lib/fastclick'
+
 window.axios = Axios
 window.querystring = querystring
 Vue.prototype.$http = Axios
