@@ -22,7 +22,7 @@ export default {
   enable () {
     this.init()
     this.register()
-    this.subscribe('all')
+    // this.subscribe('all')
     this.process()
   },
   init () {

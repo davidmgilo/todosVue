@@ -87,7 +87,6 @@
 
 <script>
 import auth from './auth'
-import notifications from './services/notifications'
 
 export default {
   name: 'app',
@@ -103,7 +102,6 @@ export default {
   methods: {
     onDeviceReady () {
       console.log('Working on platform: ' + window.device.platform)
-      notifications.enable()
       this.overrideAlerts()
       window.FastClick.attach(document.body)
     },
@@ -121,6 +119,7 @@ export default {
     },
     overrideAlerts () {
       if (navigator.notification) { // Override default HTML alert with native dialog
+        console.log('alerts overwritten')
         window.alert = function (message) {
           navigator.notification.alert(
                   message,    // message

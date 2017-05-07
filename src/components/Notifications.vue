@@ -12,14 +12,21 @@
 <style>
 </style>
 <script>
+  import notif from '../services/notifications'
+  import todosVue from '../todosVue'
   export default{
-    props: {
-      notifications: {
-        type: Array,
-        default: function () {
-          return []
-        }
+    data () {
+      return {
+        notifications: []
       }
+    },
+    created () {
+      notif.enable()
+      this.$http.get(todosVue.GET_MESSAGES_URL).then((response) => {
+        this.notifications = response.data
+      }, (error) => {
+        console.log('error: ' + error)
+      })
     }
   }
 </script>
