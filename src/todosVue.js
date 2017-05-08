@@ -6,6 +6,6 @@ const todosVue = {
   API_PROFILE_URL: 'http://todosbackend.davidmartinez.2dam.acacha.org:8080/api/v1/loguser',
   ANDROID_SENDER_ID: '1066055111450',
   REGISTER_GCM_TOKEN_URL: 'http://todosbackend.davidmartinez.2dam.acacha.org:8080/api/v1/user/gcmtoken',
-  GET_MESSAGES_URL: 'http://todosbackend.davidmartinez.2dam.acacha.org:8080/api/v1/user/messages'
+  GET_MESSAGES_URL: 'http://todosbackend.davidmartinez.2dam.acacha.org:8080/api/user/messages'
 }
 export default todosVue

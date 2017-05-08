@@ -24,7 +24,7 @@
 </style>
 <script>
 import todosVue from '../todosVue'
-
+import notif from '../services/notifications'
 export default{
   data () {
     return {
@@ -33,7 +33,11 @@ export default{
   },
   created () {
     if (document.location.hash) var token = this.extractToken(document.location.hash)
-    if (token) this.saveToken(token)
+    if (token) {
+      this.saveToken(token)
+      this.$http.defaults.headers.common['Authorization'] = 'Bearer ' + this.fetchToken()
+      notif.enable()
+    }
     if (this.token == null) {
       this.token = this.fetchToken()
     }
